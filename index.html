@@ -29,7 +29,7 @@
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-const View = { INICIO:'inicio', NOVEDADES:'novedades', COMUNICACIONES:'comunicaciones', DATA_CLOUD:'data_cloud', WHATSAPP:'whatsapp', CASOS_USO:'casos_uso', ARQUITECTURA:'arquitectura', DATOS:'datos', AGENDA:'agenda' };
+const View = { INICIO:'inicio', NOVEDADES:'novedades', COMUNICACIONES:'comunicaciones', DATA_CLOUD:'data_cloud', WHATSAPP:'whatsapp', CASOS_USO:'casos_uso', ARQUITECTURA:'arquitectura', DATOS:'datos', AGENDA:'agenda', REUNION:'reunion' };
 const logoUrl = "data:image/png;base64,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";
 
 const SectionHeader = ({ eyebrow, title, subtitle }) => (
@@ -513,7 +513,7 @@ const WhatsappView = ({ onNavigate }) => {
                 <div className="space-y-5">
                     <AlertBox type="danger" text="Hay 2 procesos paralelos que deben resolverse coordinadamente: el RFI formal con 3 proveedores y el uso no oficial de Treble por parte del negocio. Ambos generan riesgos distintos si no se gestionan juntos." />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Card className="border-l-4 border-l-blue-500"><h3 className="text-sm font-black text-slate-900 mb-2">RFI formal — en curso</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">3 proveedores: Infobip (actual), Salesforce/Freeway (V6), Twilio/SEAQ. Objetivo: chatbot WhatsApp 24/7 con escalamiento a agentes. Requiere vobo de VPs Falla y Suárez.</p><div className="flex flex-wrap gap-1.5"><Badge label="Infobip" color="blue" /><Badge label="Salesforce/Freeway" color="green" /><Badge label="Twilio/SEAQ" color="purple" /></div></Card>
+                        <Card className="border-l-4 border-l-blue-500"><h3 className="text-sm font-black text-slate-900 mb-2">RFI formal — en curso</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">Proceso en quinta ronda de evaluación. 3 proveedores: Infobip (actual), Salesforce/Freeway (V6), Twilio/SEAQ. Objetivo: chatbot WhatsApp 24/7 con escalamiento a agentes. Requiere vobo de VPs Falla y Suárez.</p><div className="flex flex-wrap gap-1.5"><Badge label="Infobip" color="blue" /><Badge label="Salesforce/Freeway" color="green" /><Badge label="Twilio/SEAQ" color="purple" /></div></Card>
                         <Card className="border-l-4 border-l-red-500"><h3 className="text-sm font-black text-slate-900 mb-2">Treble — uso no oficial identificado</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">El negocio ya está usando Treble sin que esté dentro del stack tecnológico aprobado de SB. Herramienta activa sin contrato formal, sin veeduría de TI y sin evaluación de seguridad.</p><Badge label="Shadow IT — fuera del stack oficial" color="red" /></Card>
                     </div>
                     <Card>
@@ -706,6 +706,256 @@ const DatosView = () => (
     </div>
 );
 
+// ── REUNIÓN SF — HOJA DE TRABAJO ────────────────────────────────────────────
+const ReunionView = ({ onNavigate }) => {
+    const [tab, setTab] = useState('pagamos');
+    const tabs = [['pagamos','¿Qué estamos pagando?'],['usamos','¿Qué estamos usando?'],['interesa','¿Qué nos interesa?'],['preguntas','Preguntas para SF']];
+
+    const lineaPagamos = [
+        { prod:"Salesforce CDP / Customer Engagement Platform", area:"VP Mercadeo", u:93, precio:"~$247K USD/año", contratos:"Marketing Cloud · Email Studio · Journey Builder · Segmentación · Activaciones digitales", estado:"Activo — facturando", color:"green" },
+        { prod:"Salesforce Field Service Management (FSM)", area:"Asistencia Bolívar", u:8, precio:"~$22K USD/año", contratos:"Órdenes de servicio · Asignación técnicos · Ruteo y seguimiento GPS · App móvil técnicos", estado:"Activo — facturando", color:"green" },
+        { prod:"Propuesta V6 — Service Cloud + Agentforce (EN EVALUACIÓN, aún no firmado)", area:"VP Servicio / Contact Center", u:205, precio:"$162.5K USD/año (Opción A)", contratos:"Service Cloud · Digital Engagement · Knowledge · Agentforce Flex Credits (20M/año) · Customer Data Cloud (8 usuarios) · WhatsApp Credits", estado:"En negociación", color:"yellow" },
+    ];
+
+    const v6detalle = [
+        { concepto:"Service Cloud", cant:"205 licencias", unitario:"$20/lic/mes", totalV6:"$59,950 (propuesta)", calculo:"205 × $20 × 12 = $49,200", diferencia:"$10,750 sin explicar", alert:true },
+        { concepto:"Digital Engagement", cant:"205 licencias", unitario:"$10/lic/mes", totalV6:"$36,900 (propuesta)", calculo:"205 × $10 × 12 = $24,600", diferencia:"$12,300 sin explicar", alert:true },
+        { concepto:"Knowledge", cant:"205 licencias", unitario:"$0 (incluido)", totalV6:"$0", calculo:"Incluido en Service Cloud", diferencia:"—", alert:false },
+        { concepto:"Agentforce Flex Credits", cant:"200 paquetes × 100K créditos", unitario:"$300/paquete", totalV6:"$60,000/año", calculo:"= 20M créditos/año · ~1.67M/mes", diferencia:"—", alert:false },
+        { concepto:"Customer Data Cloud (Data Services)", cant:"8 usuarios", unitario:"$79/mes", totalV6:"$632 (propuesta)", calculo:"8 × $79 × 12 = $7,584", diferencia:"$6,952 sin explicar", alert:true },
+        { concepto:"WhatsApp Message Credits", cant:"26,984 packs × 1,000", unitario:"$0.63/conversación", totalV6:"$17,000/año", calculo:"≈ 27M conversaciones/año", diferencia:"57x–260x vs. precio de mercado", alert:true },
+        { concepto:"Soporte Premier (Opción A)", cant:"1", unitario:"15% del total", totalV6:"$11,070/año", calculo:"Signature (Opción B): $98K/año", diferencia:"—", alert:false },
+    ];
+
+    const usoActual = [
+        { cap:"Segmentación de audiencias (CDP)", mod:"CDP/CEP", uso:"En uso", desc:"Campañas segmentadas hacia clientes de VP Mercadeo activas", icono:"check_circle", c:"green" },
+        { cap:"Email Studio — campañas de email", mod:"CDP/CEP", uso:"En uso", desc:"Canal principal de activación de campañas. Funcionando.", icono:"check_circle", c:"green" },
+        { cap:"Journey Builder (básico)", mod:"CDP/CEP", uso:"Uso parcial", desc:"Journeys simples configurados. Sin personalización avanzada por comportamiento.", icono:"warning", c:"amber" },
+        { cap:"Two-Way Conversations", mod:"CDP/CEP", uso:"Sin activar", desc:"GA desde Feb 2026 — probablemente ya en la licencia. Nunca se activó.", icono:"cancel", c:"red" },
+        { cap:"Journey Decisioning adaptativo", mod:"CDP/CEP", uso:"Sin activar", desc:"GA desde Oct 2025. Depende de la edición contratada. Sin validar.", icono:"cancel", c:"red" },
+        { cap:"Personalization Decisioning", mod:"CDP/CEP", uso:"Sin activar", desc:"GA Oct 2025. Requiere conectar Data 360 al Data Lake de SB.", icono:"cancel", c:"red" },
+        { cap:"Agentforce Campaign Creation", mod:"CDP/CEP", uso:"Sin activar", desc:"Requiere Flex Credits + Employee Agent en Setup. Nunca configurado.", icono:"cancel", c:"red" },
+        { cap:"Agentforce Web Curation", mod:"CDP/CEP", uso:"Sin activar", desc:"GA Oct 2025. Requiere SDK en el portal web de SB.", icono:"cancel", c:"red" },
+        { cap:"Asignación de técnicos y órdenes de servicio", mod:"Field Service", uso:"En uso", desc:"Funcionalidad core activa con Asistencia Bolívar.", icono:"check_circle", c:"green" },
+        { cap:"Ruteo y optimización de visitas", mod:"Field Service", uso:"En uso", desc:"Algoritmo de ruteo activo para visitas domiciliarias.", icono:"check_circle", c:"green" },
+        { cap:"Integración Agentforce + Field Service", mod:"Field Service", uso:"Sin activar", desc:"Automatización proactiva de casos y análisis predictivo de demanda.", icono:"cancel", c:"red" },
+    ];
+
+    const interesa = [
+        { titulo:"Agentforce for Marketing — campañas autónomas desde lenguaje natural", prioridad:"Alta", desc:"El agente diseña campañas completas desde un brief: audiencia, copy, journey y optimización. De semanas a horas en el ciclo de campaña.", preguntaClave:"¿Está en nuestra licencia CDP/CEP actual o requiere módulo adicional? ¿Cuántos Flex Credits consume por campaña?", modelo:"Flex Credits + Employee Agent en Setup", color:"green" },
+        { titulo:"Two-Way Conversations — email bidireccional", prioridad:"Alta", desc:"Los emails dejan de ser unidireccionales. El cliente responde y Agentforce gestiona la conversación, escalando a humano si es necesario. GA Feb 2026.", preguntaClave:"¿Está en nuestra edición actual? ¿Qué requiere para activarse? ¿Hay costo por conversación?", modelo:"Probablemente ya incluido en CDP/CEP — a verificar", color:"green" },
+        { titulo:"Journey Decisioning — journeys adaptativos en tiempo real", prioridad:"Alta", desc:"El agente determina canal y mensaje óptimo por cliente según señales en tiempo real. Reemplaza reglas estáticas si/entonces.", preguntaClave:"¿Está en nuestra edición o es upgrade? ¿Cuál es el delta de precio?", modelo:"Edición Engagement+ o Advanced", color:"green" },
+        { titulo:"Data 360 BYOL Federation — conectar el Data Lake de SB sin duplicar datos", prioridad:"Alta", desc:"Agentforce lee el Data Lake de SB (GCP + MongoDB) sin copiar datos a Salesforce. La soberanía del dato permanece en SB.", preguntaClave:"¿Está BYOL Federation en los 8 usuarios de Customer Data Cloud de la propuesta V6? ¿Cuál es el costo de escalarlo?", modelo:"Customer Data Cloud — Data Services edition", color:"blue" },
+        { titulo:"Identity Resolution — un solo perfil para el mismo cliente", prioridad:"Alta", desc:"El mismo cliente hoy tiene hasta 4 IDs distintos en SB. Sin unificación Agentforce ve múltiples personas y no puede personalizar.", preguntaClave:"¿El proceso de Identity Resolution está en el alcance de Freeway? ¿Cómo funciona con datos de Siebel legacy?", modelo:"Data 360 — Identity Resolution engine", color:"amber" },
+        { titulo:"Agentforce Voice — transcripción e integración con PureCloud", prioridad:"Media", desc:"Transcripción de llamadas en tiempo real desde PureCloud. Conexión nativa con Genesys Cloud CX declarada por SF.", preguntaClave:"¿El conector con Genesys Cloud CX está en el scope de la propuesta V6? ¿Qué licencia adicional requiere?", modelo:"Agentforce Voice — CX Cloud AppExchange", color:"purple" },
+    ];
+
+    const preguntas = [
+        { bloque:"Bloque 1 — Lo que pagamos: clarificar antes de cualquier cosa", qs:[
+            { tp:"N", q:"La propuesta V6 tiene inconsistencias matemáticas: Service Cloud $59,950 vs. cálculo $49,200 (diff: $10,750). Digital Engagement $36,900 vs. $24,600 (diff: $12,300). Customer Data Cloud $632 vs. $7,584 (diff: $6,952). En total ~$24K sin explicar. ¿Cómo se explican estas diferencias?", ctx:"Necesitamos la tabla de precios unitarios × cantidad × meses que cuadre matemáticamente antes de firmar cualquier contrato." },
+            { tp:"C", q:"¿La licencia actual de CDP/CEP (~$247K USD/año, 93 usuarios) incluye acceso a Marketing Cloud Next con Two-Way Conversations y Journey Decisioning, o requiere una actualización de edición?", ctx:"Si ya están incluidas, se pueden activar sin nueva inversión y resuelven directamente los puntos 1 y 2 del backlog." },
+            { tp:"C", q:"¿Cuál es el módulo exacto de Data 360 que cubren los 8 usuarios de Customer Data Cloud en la propuesta V6? ¿Esa edición incluye BYOL Data Federation?", ctx:"BYOL Federation permite que Agentforce lea el Data Lake de SB sin copiar datos. Si no está incluido, la arquitectura de soberanía de datos requiere costo adicional." },
+            { tp:"N", q:"¿Qué pasó con la bolsa de horas que incluía la V3? ¿La propuesta V6 incluye horas de implementación de Freeway? ¿Y la integración con Oracle Siebel está en el scope o fue retirada como en la V4?", ctx:"La V4 retiró integraciones del alcance. Necesitamos saber exactamente qué hace Freeway y qué debe hacer SB por su cuenta." },
+        ]},
+        { bloque:"Bloque 2 — Agentforce: cómo funciona el modelo de créditos", qs:[
+            { tp:"C", q:"¿Cuántos Flex Credits consume cada tipo de interacción? (a) una conversación de Campaign Creation, (b) una respuesta de Two-Way Email, (c) una resolución de caso en Service Cloud.", ctx:"20M créditos/año a $300 el paquete de 100K = $60K. Sin este dato no podemos saber si el dimensionamiento es suficiente." },
+            { tp:"T", q:"¿Agentforce Employee Agent — necesario para activar Campaign Creation y Two-Way — está incluido en el proyecto de Freeway o es configuración adicional?", ctx:"Requiere habilitación desde Setup de SF. Es el prerequisito para activar todas las capacidades de Agentforce que nos interesan." },
+            { tp:"C", q:"¿Los Flex Credits no usados al cierre del año se acumulan (rollover) o se pierden?", ctx:"Si se pierden, 200 paquetes × $300 pueden representar un sobrecosto o un subdimensionamiento difícil de ajustar post-firma." },
+            { tp:"C", q:"¿Cuál es la ruta más corta para activar Two-Way Conversations y Journey Decisioning con lo que SB ya tiene contratado hoy?", ctx:"Si ya están disponibles en la licencia actual, el costo de activación es $0 y el tiempo sería semanas, no meses." },
+        ]},
+        { bloque:"Bloque 3 — Data 360 e integración con el Data Lake de SB", qs:[
+            { tp:"T", q:"¿BYOL Data Federation permite que Agentforce lea directamente el Data Lake de SB (GCP BigQuery + MongoDB Atlas) sin copiar datos a Salesforce?", ctx:"Este mecanismo preserva la soberanía del dato en SB. Sin BYOL, los datos del cliente deben vivir en SF — mismo riesgo de vendor lock-in que tuvo IBM FileNet." },
+            { tp:"T", q:"¿El conector MuleSoft para Oracle Siebel 4.0 está en el scope de Freeway o es un componente adicional que SB debe contratar por separado?", ctx:"Necesario para que Siebel emita eventos a Data 360. La propuesta V6 no lo menciona explícitamente." },
+            { tp:"T", q:"¿La Identity Resolution de Data 360 puede unificar perfiles donde la fuente principal es Oracle Siebel (IDs legacy) con sistemas modernos como MongoDB y APIs REST?", ctx:"SB tiene el mismo cliente con 4 IDs distintos en 4 sistemas. Sin Identity Resolution, Agentforce no puede personalizar." },
+            { tp:"C", q:"¿Hay costo adicional por perfil activado o por segmento en Data 360, más allá de la licencia base de 8 usuarios de la propuesta?", ctx:"El pricing de Data 360 puede cobrar por perfil unificado activado. La propuesta V6 no especifica este modelo." },
+        ]},
+        { bloque:"Bloque 4 — WhatsApp y condiciones globales de negociación", qs:[
+            { tp:"N", q:"¿Salesforce es BSP directo de Meta para WhatsApp o usa un intermediario (Infobip, Twilio)? Si es intermediario, ¿cuál es ese proveedor y qué SLA ofrece en Colombia?", ctx:"El precio de $0.63/conversación sugiere intermediación. Si SF usa Infobip, SB pagaría 57x más por el mismo servicio que ya tiene directo con Infobip." },
+            { tp:"C", q:"¿Es posible usar Salesforce Digital Engagement para la orquestación del journey (Agentforce) pero con un BSP externo más económico para el envío físico del mensaje de WhatsApp?", ctx:"Esto permitiría aprovechar Agentforce sin pagar el markup de SF en WhatsApp. ¿La arquitectura lo soporta?" },
+            { tp:"N", q:"SB tiene hoy ~$270K USD/año en SF (CDP/CEP + Field Service). Consolidando todo en contrato multianual con la propuesta V6, ¿qué descuento por volumen y lealtad puede ofrecer Salesforce?", ctx:"El gasto proyectado con V6 supera $430K USD/año. Esa consolidación y lealtad debe tener un reconocimiento económico." },
+            { tp:"C", q:"¿Cuáles son las condiciones de salida del contrato? Si SB no renueva, ¿los datos en Data 360 se pueden exportar en formato abierto (Parquet, CSV) sin costo?", ctx:"Requerimiento no negociable. Si los datos quedan atrapados en Data 360 al salir, es el mismo riesgo que motivó preferir O'Leary sobre IBM FileNet." },
+        ]},
+    ];
+
+    const tipoQ = { T:{l:"Técnica",c:"tag-tec"}, C:{l:"Comercial",c:"tag-com"}, N:{l:"Negociación",c:"tag-neg"} };
+
+    return (
+        <div className="animate-in space-y-6 pb-20">
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#1e3a5f] via-[#162d4a] to-[#0f1f35] rounded-[28px] p-8 text-white shadow-xl">
+                <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-bolivar-yellow-bright/20 flex items-center justify-center shrink-0"><span className="material-symbols-outlined text-bolivar-yellow-bright text-xl">handshake</span></div>
+                        <div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-bolivar-yellow-bright">Hoja de trabajo — Reunión hoy</p><h1 className="text-2xl font-black tracking-tight leading-snug">Reunión con ejecutivos de Salesforce</h1></div>
+                    </div>
+                    <p className="text-white/70 text-sm font-medium leading-relaxed">Objetivo: clarificar qué licencias tenemos, qué pagamos exactamente, qué estamos usando realmente, y qué capacidades nuevas (especialmente Agentforce) podríamos explorar y bajo qué modelo de acceso.</p>
+                </div>
+                <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-white/5 blur-2xl pointer-events-none"></div>
+            </div>
+
+            <div className="flex gap-2 flex-wrap">
+                {tabs.map(([id,label]) => <button key={id} onClick={() => setTab(id)} className={`px-4 py-2 rounded-xl text-xs font-black transition-all ${tab===id?'bg-[#1e3a5f] text-white shadow-md':'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}>{label}</button>)}
+            </div>
+
+            {tab==='pagamos' && (
+                <div className="space-y-5">
+                    <AlertBox type="warn" text="Punto de partida: antes de hablar de nuevas capacidades, clarificar qué contratos están vigentes, cuánto pagamos exactamente, y resolver las inconsistencias matemáticas identificadas en la propuesta V6." />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {lineaPagamos.map((p,i) => (
+                            <Card key={i} className={`border-t-4 ${p.color==='green'?'border-t-emerald-500':'border-t-amber-400'}`}>
+                                <Badge label={p.estado} color={p.color==='green'?'green':'yellow'} />
+                                <h3 className="font-black text-slate-900 text-sm mt-2 mb-0.5 leading-snug">{p.prod}</h3>
+                                <p className="text-[10px] text-slate-400 mb-2">{p.area} · {p.u} usuarios</p>
+                                <p className="text-xl font-black text-[#004A3B] mb-2">{p.precio}</p>
+                                <p className="text-[11px] text-slate-500 leading-relaxed">{p.contratos}</p>
+                            </Card>
+                        ))}
+                    </div>
+                    <Card>
+                        <div className="flex items-center gap-3 mb-3">
+                            <h3 className="font-black text-slate-900">Desglose línea a línea — Propuesta V6 (19-Nov-2025, Valentina Contreras)</h3>
+                        </div>
+                        <AlertBox type="danger" text="Se identificaron inconsistencias matemáticas por ~$24K USD que deben resolverse antes de firmar. Llevar este cuadro a la reunión y pedir la tabla de precios unitarios que cuadre matemáticamente." />
+                        <div className="overflow-x-auto mt-4">
+                            <table className="w-full text-xs">
+                                <thead><tr className="border-b-2 border-slate-200 bg-slate-50">
+                                    {["Producto","Cantidad","Precio unit.","Total propuesta","Cálculo propio","Diferencia"].map((h,i) => <th key={i} className="text-left py-3 px-3 font-black text-slate-500 uppercase tracking-wider whitespace-nowrap">{h}</th>)}
+                                </tr></thead>
+                                <tbody>
+                                    {v6detalle.map((r,i) => (
+                                        <tr key={i} className={`border-b border-slate-100 ${r.alert?'bg-red-50/40':i%2===0?'':'bg-slate-50/30'}`}>
+                                            <td className="py-3 px-3 font-bold text-slate-800 max-w-[180px]">{r.concepto}</td>
+                                            <td className="py-3 px-3 text-slate-600">{r.cant}</td>
+                                            <td className="py-3 px-3 text-slate-600 font-medium">{r.unitario}</td>
+                                            <td className="py-3 px-3 font-bold text-slate-800">{r.totalV6}</td>
+                                            <td className="py-3 px-3 text-slate-500 font-mono text-[10px]">{r.calculo}</td>
+                                            <td className="py-3 px-3">{r.alert ? <span className="flex items-center gap-1 text-red-700 font-black text-[10px] whitespace-nowrap"><span className="material-symbols-outlined text-sm">warning</span>{r.diferencia}</span> : <span className="text-slate-400 text-[10px]">{r.diferencia}</span>}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                                <tfoot><tr className="border-t-2 border-slate-300 bg-slate-50">
+                                    <td colSpan={3} className="py-3 px-3 font-black text-slate-900 uppercase text-xs">Total Opción A (Premier)</td>
+                                    <td className="py-3 px-3 font-black text-[#004A3B] text-lg">$162,502</td>
+                                    <td className="py-3 px-3"></td>
+                                    <td className="py-3 px-3 text-red-700 font-black text-[10px]">~$24K a aclarar</td>
+                                </tr></tfoot>
+                            </table>
+                        </div>
+                    </Card>
+                    <Card>
+                        <h3 className="font-black text-slate-900 mb-3">Opciones de soporte — diferencia clave que puede negociarse</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            {[["Premier — Opción A (incluida)","$11,070/año","Respuesta crítica 1h · Sin TAM · Sin monitoreo proactivo","amber"],["Signature — Opción B (adicional)","$98,000/año","Respuesta crítica 15 min · TAM designado · Monitoreo proactivo 24/7","blue"]].map(([t,p,d,c],i) => (
+                                <div key={i} className={`bg-${c==='amber'?'amber':'blue'}-50 border border-${c==='amber'?'amber':'blue'}-200 rounded-xl p-4`}>
+                                    <div className="flex items-center justify-between mb-2"><p className="font-black text-slate-900 text-sm">{t}</p><p className="text-xl font-black text-[#004A3B]">{p}</p></div>
+                                    <p className="text-xs text-slate-600 leading-relaxed">{d}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-xs text-slate-500 leading-relaxed"><span className="font-black text-slate-700">Diferencia: $86,930 USD/año.</span> El único diferencial relevante es el TAM designado y 15 min vs. 1h en respuesta crítica. En un contrato multianual de gran volumen, el TAM puede negociarse sin pagar el precio completo del Signature.</p>
+                    </Card>
+                </div>
+            )}
+
+            {tab==='usamos' && (
+                <div className="space-y-5">
+                    <AlertBox type="info" text="De lo que pagamos hoy (~$270K/año), ¿qué se usa realmente? Este es el inventario documentado. Los módulos marcados como 'Sin activar' son capacidades por las que SB está pagando pero que no generan valor actualmente." />
+                    <div className="grid grid-cols-3 gap-4">
+                        <StatCard label="Capacidades en uso activo" value={usoActual.filter(u=>u.uso==='En uso').length} sub="generando valor" color="green" />
+                        <StatCard label="Uso parcial" value={usoActual.filter(u=>u.uso==='Uso parcial').length} sub="requieren ajuste" color="yellow" />
+                        <StatCard label="Sin activar — pagando sin usar" value={usoActual.filter(u=>u.uso==='Sin activar').length} sub="oportunidad inmediata" color="red" />
+                    </div>
+                    <Card>
+                        <h3 className="font-black text-slate-900 mb-4">Inventario detallado: contratado vs. estado de uso real</h3>
+                        <div className="space-y-2">
+                            {usoActual.map((u,i) => {
+                                const cc = { green:"bg-emerald-50 border-emerald-200", amber:"bg-amber-50 border-amber-200", red:"bg-red-50 border-red-200" };
+                                const ic = { green:"text-emerald-600", amber:"text-amber-500", red:"text-red-500" };
+                                const bc = { green:"bg-emerald-100 text-emerald-800", amber:"bg-amber-100 text-amber-800", red:"bg-red-100 text-red-800" };
+                                return (
+                                    <div key={i} className={`flex items-start gap-3 p-3.5 rounded-xl border ${cc[u.c]}`}>
+                                        <span className={`material-symbols-outlined text-xl shrink-0 mt-0.5 ${ic[u.c]}`}>{u.icono}</span>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                                                <p className="text-sm font-black text-slate-900">{u.cap}</p>
+                                                <span className={`text-[9px] font-black px-2 py-0.5 rounded-full ${bc[u.c]}`}>{u.uso}</span>
+                                                <Badge label={u.mod} color="slate" />
+                                            </div>
+                                            <p className="text-xs text-slate-600 leading-relaxed">{u.desc}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </Card>
+                    <AlertBox type="success" text="Oportunidad inmediata: si Two-Way Conversations y Journey Decisioning ya están en la licencia actual, activarlos cuesta $0 y resuelve directamente el Punto 2 del backlog (comunicaciones de cartera El Libertador). La pregunta clave para hoy: ¿están en nuestra edición actual?" />
+                </div>
+            )}
+
+            {tab==='interesa' && (
+                <div className="space-y-5">
+                    <AlertBox type="info" text="Capacidades que SB ve como potencialmente valiosas. Para cada una, el objetivo de la reunión es determinar: ¿está en la licencia actual (activación $0), requiere upgrade (delta de precio), o es un producto separado (nuevo contrato)?" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {interesa.map((item,i) => {
+                            const bp = { Alta:"bg-red-100 text-red-800", Media:"bg-amber-100 text-amber-800" };
+                            const bl = { green:"border-l-emerald-500", blue:"border-l-blue-500", purple:"border-l-purple-500", amber:"border-l-amber-400" };
+                            return (
+                                <Card key={i} className={`border-l-4 ${bl[item.color]}`}>
+                                    <div className="flex items-start justify-between gap-2 mb-3">
+                                        <h3 className="font-black text-slate-900 text-sm leading-snug flex-1">{item.titulo}</h3>
+                                        <span className={`text-[9px] font-black px-2 py-1 rounded-full shrink-0 ${bp[item.prioridad]}`}>Prioridad {item.prioridad}</span>
+                                    </div>
+                                    <p className="text-xs text-slate-600 leading-relaxed mb-3">{item.desc}</p>
+                                    <div className="bg-slate-50 rounded-xl p-3 mb-2">
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-1">Pregunta clave para SF hoy</p>
+                                        <p className="text-xs text-slate-700 font-medium leading-relaxed italic">"{item.preguntaClave}"</p>
+                                    </div>
+                                    <div className="flex items-center gap-1.5"><span className="material-symbols-outlined text-slate-400 text-sm">payments</span><p className="text-[10px] text-slate-500 font-medium">{item.modelo}</p></div>
+                                </Card>
+                            );
+                        })}
+                    </div>
+                </div>
+            )}
+
+            {tab==='preguntas' && (
+                <div className="space-y-6">
+                    <AlertBox type="info" text="Preguntas organizadas por bloque. Las marcadas como 'Negociación' son las de mayor impacto económico — idealmente deben tener respuesta antes de terminar la reunión." />
+                    {preguntas.map((bloque,bi) => (
+                        <div key={bi}>
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="h-[2px] flex-1 bg-slate-200"></div>
+                                <span className="text-xs font-black text-slate-500 uppercase tracking-wider whitespace-nowrap px-2">{bloque.bloque}</span>
+                                <div className="h-[2px] flex-1 bg-slate-200"></div>
+                            </div>
+                            <div className="space-y-3">
+                                {bloque.qs.map((p,qi) => {
+                                    const t = tipoQ[p.tp];
+                                    return (
+                                        <Card key={qi}>
+                                            <div className="flex items-start gap-3">
+                                                <span className={`text-[9px] font-black px-2 py-1 rounded mt-0.5 shrink-0 ${t.c}`}>{t.l}</span>
+                                                <div className="flex-1">
+                                                    <p className="text-sm font-bold text-slate-900 mb-2 leading-relaxed">{p.q}</p>
+                                                    <p className="text-[11px] text-slate-400 leading-relaxed italic">{p.ctx}</p>
+                                                </div>
+                                            </div>
+                                        </Card>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                    <div className="flex gap-2 text-[10px] pt-2">
+                        <span className="tag-tec px-2 py-1 rounded font-black">T = Técnica</span>
+                        <span className="tag-com px-2 py-1 rounded font-black">C = Comercial / licencias</span>
+                        <span className="tag-neg px-2 py-1 rounded font-black">N = Negociación — impacto económico directo</span>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
 const AgendaView = () => {
     const [ab, setAb] = useState(0);
     const bloques = [
@@ -768,8 +1018,8 @@ const App = () => {
         return () => window.removeEventListener('hashchange',h);
     },[]);
     const nav = v => { setCv(v); window.location.hash=v; setMob(false); window.scrollTo(0,0); };
-    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.DATOS,label:"Datos"},{view:View.AGENDA,label:"Agenda SF"}];
-    const render = () => { switch(cv) { case View.INICIO: return <HomeView onNavigate={nav}/>; case View.NOVEDADES: return <NovedadesView onNavigate={nav}/>; case View.COMUNICACIONES: return <ComunicacionesView onNavigate={nav}/>; case View.DATA_CLOUD: return <DataCloudView onNavigate={nav}/>; case View.WHATSAPP: return <WhatsappView onNavigate={nav}/>; case View.CASOS_USO: return <CasosUsoView/>; case View.ARQUITECTURA: return <ArquitecturaView/>; case View.DATOS: return <DatosView/>; case View.AGENDA: return <AgendaView/>; default: return <HomeView onNavigate={nav}/>; } };
+    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.REUNION,label:"⭐ Reunión SF hoy"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.DATOS,label:"Datos"},{view:View.AGENDA,label:"Agenda SF"}];
+    const render = () => { switch(cv) { case View.INICIO: return <HomeView onNavigate={nav}/>; case View.REUNION: return <ReunionView onNavigate={nav}/>; case View.NOVEDADES: return <NovedadesView onNavigate={nav}/>; case View.COMUNICACIONES: return <ComunicacionesView onNavigate={nav}/>; case View.DATA_CLOUD: return <DataCloudView onNavigate={nav}/>; case View.WHATSAPP: return <WhatsappView onNavigate={nav}/>; case View.CASOS_USO: return <CasosUsoView/>; case View.ARQUITECTURA: return <ArquitecturaView/>; case View.DATOS: return <DatosView/>; case View.AGENDA: return <AgendaView/>; default: return <HomeView onNavigate={nav}/>; } };
     return (
         <div className="flex flex-col h-screen bg-canvas-bg font-sans">
             <header className="no-print sticky top-0 z-50 bg-white border-b border-slate-200 h-20 shrink-0 shadow-sm">

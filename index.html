@@ -65,7 +65,7 @@ const HomeView = ({ onNavigate }) => {
     const sub = [
         { view:View.CASOS_USO, icon:"lightbulb", title:"6 Casos de uso Vista 360", desc:"Agentforce aplicado a SB" },
         { view:View.ARQUITECTURA, icon:"account_tree", title:"Arquitectura integración", desc:"Agentforce 360 + Siebel + PureCloud" },
-    {/*    { view:View.DATOS, icon:"table_chart", title:"Requerimientos de datos", desc:"18 campos y estado del Data Lake" }, */}
+        // Sección "Requerimientos de datos" inhabilitada
         { view:View.AGENDA, icon:"checklist", title:"Agenda reunión SF", desc:"20 preguntas técnicas y comerciales" },
     ];
     return (
@@ -681,30 +681,8 @@ const ArquitecturaView = () => (
     </div>
 );
 
-/* const DatosView = () => (
-    <div className="animate-in space-y-6 pb-20">
-        <SectionHeader eyebrow="Análisis derivado — Punto 1 + 3" title="Requerimientos de datos para Agentforce" subtitle="18 campos del Data Lake de SB necesarios para construir la audiencia de cross-sell de vida" />
-        <div className="grid grid-cols-3 gap-4">
-            <StatCard label="Disponibles en Data Lake" value="11" sub="campos listos para uso" color="green" />
-            <StatCard label="Existen pero sin mapear a DMO" value="4" sub="requieren trabajo de integración" color="yellow" />
-            <StatCard label="Datos faltantes o a construir" value="3" sub="incluye score de propensión" color="red" />
-        </div>
-        <AlertBox type="warn" text="Dato más crítico faltante: 'canal de contacto preferido' no existe como campo consolidado en ningún sistema. Sin él, Agentforce no puede personalizar el canal del journey — envía email a todos aunque algunos respondan mejor por WhatsApp." />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[["Identidad (Individual + Party ID DMO)",[["ID único cédula/NIT","ok"],["Nombre completo","ok"],["Email principal","ok"],["Teléfono celular","warn"],["Canal contacto preferido","miss"],["IDs Siebel+Flow360+PureCloud+Centra","warn"]]],["Pólizas (Insurance Policy DMO)",[["Número y tipo de póliza","ok"],["Valor de cobertura","ok"],["Fecha vencimiento/renovación","ok"],["Estado de la póliza","ok"],["Todas las pólizas del hogar","warn"],["Score propensión cross-sell","miss"]]],["Comportamiento (Engagement DMO)",[["Siniestro abierto Sí/No","ok"],["Fecha último siniestro","ok"],["Última apertura email","warn"],["Último login portal/app","warn"],["Última llamada call center","warn"],["Satisfacción siniestro NPS","warn"]]]].map(([titulo,campos],i) => (
-                <Card key={i}>
-                    <h3 className="text-xs font-black text-slate-700 mb-3">{titulo}</h3>
-                    <div className="space-y-2">
-                        {campos.map(([n,st],j) => {
-                            const s = { ok:{dot:"bg-emerald-500",b:"bg-emerald-50 text-emerald-700 border-emerald-200",l:"Disponible"}, warn:{dot:"bg-amber-400",b:"bg-amber-50 text-amber-700 border-amber-200",l:"Mapeo"}, miss:{dot:"bg-red-400",b:"bg-red-50 text-red-700 border-red-200",l:"Faltante"} };
-                            return <div key={j} className="flex items-center justify-between py-1.5 border-b border-slate-100 last:border-0"><div className="flex items-center gap-2"><div className={`w-2 h-2 rounded-full ${s[st].dot}`}></div><span className="text-xs text-slate-700">{n}</span></div><span className={`text-[9px] font-black px-2 py-0.5 rounded-full border ${s[st].b}`}>{s[st].l}</span></div>;
-                        })}
-                    </div>
-                </Card>
-            ))}
-        </div>
-    </div>
-); */
+// DatosView inhabilitada — sección eliminada por no tener sustento documental de SB
+const DatosView = () => null;
 
 // ── REUNIÓN SF — HOJA DE TRABAJO ────────────────────────────────────────────
 const ReunionView = ({ onNavigate }) => {
